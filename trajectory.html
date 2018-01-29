@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<!--[if IE 9 ]><html class="ie9"><![endif]-->
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+        <meta name="format-detection" content="telephone=no">
+        <meta charset="UTF-8">
+
+        <meta name="description" content="Violate Responsive Admin Template">
+        <meta name="keywords" content="Super Admin, Admin, Template, Bootstrap">
+
+        <title>历史轨迹管理</title>
+            
+        <!-- CSS -->
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+        <link href="css/animate.min.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+        <link href="css/form.css" rel="stylesheet">
+        <link href="css/calendar.css" rel="stylesheet">
+        <link href="css/media-player.css" rel="stylesheet">
+        <link href="css/style.css" rel="stylesheet">
+        <link href="css/icons.css" rel="stylesheet">
+        <link href="css/generics.css" rel="stylesheet"> 
+        <link href="css/menu.css" rel="stylesheet">
+        <!--<link rel="stylesheet" type="text/css" href="http://www.jq22.com/jquery/bootstrap-3.3.4.css">-->
+    
+        <style type="text/css">
+        	#GuiJi td #play2 th{
+        		display: inline-block;
+        		height: 60px;
+        		width: 220px;
+        		
+        	}
+        	#GuiJi{
+        		/*width: 1300px;*/
+        		
+        	}
+        	.Delete{
+        		width: 50px;
+        		cursor:pointer;
+        	}
+        	.Delete:hover{
+        		color: orange;
+        	}
+        	.DaoRu{
+        		width: 50px;
+        		cursor:pointer;
+        	}
+        	.DaoRu:hover{
+        		color: orange;
+        	}
+        	.ChaKan{
+        		width: 50px;
+        		cursor:pointer;
+        	}
+        	.ChaKan:hover{
+        		color: orange;
+        	}
+        	#KMLinput h3 
+			{
+				position: absolute;
+				font-size: 1.2em;
+				font-weight: 600;
+				color: black;
+				font-family: "微软雅黑";
+				margin-left: 50px;
+			}
+			#KMLinput {
+				height: 520px;
+				width: 720px;
+				/*background-image: url(../img/guowan1.png);*/
+				/*background-color: gainsboro;*/
+				background-position: center;
+				background-size: 100% 100%;
+				/*opacity: 0.5;*/
+				color: black;
+				font-family: "微软雅黑";
+			
+			}
+			#KMLinput button{
+				/*position: absolute;*/
+				display: inline-block;
+				border-radius: 5px;
+				background-color: #00CA6D;
+				width: 160px;
+				height: 30px;
+				margin-left: 50px;
+				/*opacity: 1;*/
+			}
+			#KMLinput input{
+				display: inline-block;
+				border-radius: 5px;
+				background-color: #00CA6D;
+				width: 160px;
+				height: 30px;
+				margin-left: 50px;
+				/*opacity: 1;*/
+			}
+			#OtherShow{
+				height: 520px;
+				width: 720px;
+				/*background-image: url(../img/guowan1.png);*/
+				/*background-color: gainsboro;*/
+				background-position: center;
+				background-size: 100% 100%;
+				/*opacity: 0.5;*/
+				color: black;
+				font-family: "微软雅黑";
+				margin: 10px;
+			}
+			#OtherShow button{
+				/*position: absolute;*/
+				display: inline-block;
+				border-radius: 5px;
+				background-color: #00CA6D;
+				width: 60px;
+				height: 30px;
+				margin-left: 50px;
+				opacity: 1;
+			}
+			#OtherShow input{
+				color: #000000;
+				display: inline-block;
+				border-radius: 5px;
+				background-color: #00CA6D;
+				width: 200px;
+				height: 30px;
+				margin-left: 50px;
+				/*opacity: 1;*/
+			}
+			.delGJ{
+				position: relative;
+				left: 60px;
+			}
+        </style>
+    </head>
+    <body id="skin-blur-blue">
+        <header id="header" class="media">
+            <a href="" id="menu-toggle"></a> 
+            <a class="logo pull-left" href="asset_management.html">电力管理系统</a>
+            
+            <div class="media-body">
+                <div class="media" id="top-menu">
+                    <div class="pull-left tm-icon">
+                        <a data-drawer="messages" class="drawer-toggle" href="">
+                            <i class="sa-top-message"></i>
+                            <i class="n-count animated"></i>
+                            <span>实时消息</span>
+                        </a>
+                    </div>
+                    <div class="pull-left tm-icon">
+                        <a data-drawer="notifications" class="drawer-toggle" href="">
+                            <i class="sa-top-updates"></i>
+                            <i class="n-count animated"></i>
+                            <span>告警信息</span>
+                        </a>
+                    </div>
+                    
+                    
+
+                    <div id="time" class="pull-right">
+                        <span id="hours"></span>
+                        :
+                        <span id="min"></span>
+                        :
+                        <span id="sec"></span>
+                    </div>
+
+                    <div class="media-body">
+                        <input type="text" class="main-search">
+                    </div>
+                </div>
+            </div>
+        </header>
+        
+        <div class="clearfix"></div>
+        
+        <section id="main" class="p-relative" role="main">
+
+            <!-- Sidebar -->
+            <aside id="sidebar">
+
+                <ul class="list-unstyled side-menu" style="width: 100%!important;padding-top: 20px;text-align: center;line-height: 40px;">
+                    <!--<li>
+                        <a href="operational_monitoring.html" id='menuurl'>
+                            <i class="fa fa-calendar-o"></i><span> 运行监测</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a  href="keyInfo.html"  id='menuurl'>
+                            <i class="fa fa-bar-chart-o"></i><span> 文件上传</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="mstp_map.html" id='menuurl'>
+                            <i class="fa fa-bar-chart-o"></i><span> 全息图概览</span>
+                        </a>
+                    </li>-->
+                    <li >
+                        <a href="asset_management.html"  id='menuurl'>
+                            <i class="fa fa-building-o"></i><span> 资产管理</span>
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a href="trajectory.html"  id='menuurl'>
+                            <i class="fa fa-sort-amount-asc"></i><span> 历史轨迹</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="Three_span_point.html" id='menuurl'>
+                            <i class="fa fa-calendar-o"></i><span> 三跨点管理</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="ice.html"  id='menuurl'>
+                            <i class="fa  fa-money"></i><span> 隐患点管理</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="fire.html" id='menuurl'>
+                            <i class="fa fa-calendar-o"></i><span> 山火点管理</span>
+                        </a>
+                    </li>
+                    <!--<li>
+                        <a href="deviceManager.html"  id='menuurl'>
+                            <i class="fa fa-briefcase"></i><span> 设备管理</span>
+                        </a>
+                    </li>-->
+                    
+                    <li >
+                        <a href="userMng.html" id='menuurl'>
+                            <i class="fa fa-users"></i><span> 用户管理</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="fileupdata.html" id='menuurl'>
+                            <i class="fa fa-cogs"></i><span > 文件管理</span>
+                        </a>
+                    </li>
+                </ul>
+                
+
+            </aside>
+        
+            <!-- Content -->
+            <section id="content" class="container">
+                <!-- Messages Drawer -->
+               
+                <!-- Notification Drawer -->
+                <div id="notifications" class="tile drawer animated">
+                    <div class="listview narrow">
+                        <div class="media">
+                            <a href="">实时告警</a>
+                            <span class="drawer-close">&times;</span>
+                        </div>
+                        <div class="media text-center whiter l-100">
+                            <a href=""><small>查看所有</small></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Breadcrumb -->
+                <ol class="breadcrumb hidden-xs">
+                    <li><a href="index.html">主页</a></li>
+                    <li><a href="#">管理</a></li>
+                    <li class="active">历史轨迹</li>
+                </ol>
+                
+                <h4 class="page-title">历史轨迹管理</h4>
+                                
+                <!-- Deafult Table -->
+                <div class="block-area" id="defaultStyle">
+                    <div class="row"> 
+                    <div class="col-md-6">
+                     <div class="tile" >
+                       <h2 class="tile-title">历史轨迹信息</h2>
+                    <table class="table tile" id="GuiJi">
+                        <thead>
+                            <tr id="play2">
+                                <!--<th>姓名</th>-->
+                                <th>线路创建者</th>
+                                <th>线路名称</th>
+                               
+                                <th>线路距离</th> 
+                                 <th>创建时间</th> 
+                                 <th>删除</th>
+                                 <th>导入</th>
+                                 <th>采集</th>
+                                
+                            </tr>
+                        </thead>
+                        <tbody id="guiji">
+                        	
+                        </tbody>
+                    </table>
+                    <div class="btn-group">
+                        <!--<button type="button" class="btn btn-sm btn-alt">新增</button>-->
+                        <!--<button type="button" class="btn btn-sm btn-alt">修改</button>-->
+                        <!--<button type="button" class="btn btn-sm btn-alt">删除</button>-->
+                        <!--<button type="button" class="btn btn-sm btn-alt"></button>-->
+                    </div>
+                    </div>
+                    </div>
+                    <div class="container">
+					    
+					</div>
+                
+   
+            </section>
+            
+            <br/><br/>
+        </section>
+        
+        <!-- Javascript Libraries -->
+        <!-- jQuery -->
+        <!--<script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>--> 
+        
+        <!-- Bootstrap -->
+        <!--<script src="http://www.jq22.com/jquery/bootstrap-3.3.4.js"></script>-->
+         <script src="js/jquery-3.2.1.js"></script> <!-- jQuery Library -->
+         <script src="js/bootstrap.js"></script>
+       
+        <script src="js/jquery.dataTables.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="js/jquery.dataTables.bootstrap.js" type="text/javascript" charset="utf-8"></script>
+        <!--Media Player-->
+        <script src="js/media-player.min.js"></script> <!-- USA Map for jVectorMap -->
+        <!-- UX -->
+        <script src="js/scroll.min.js"></script> <!-- Custom Scrollbar -->
+        
+        <!-- Other -->
+        <script src="js/calendar.min.js"></script> <!-- Calendar -->
+        
+         <script src="js/Tabullet.js"></script>
+        <!-- All JS functions -->
+        <!--<script src="js/functions.js"></script>-->
+        <script src="js/Tabullet.js" type="text/javascript" charset="utf-8"></script>
+        <script src="layer-v3.1.0/layer/layer.js" type="text/javascript" charset="utf-8"></script>
+        
+    	<script src="js/urlConfig.js" type="text/javascript" charset="utf-8"></script>
+    	
+        <script type="text/javascript">
+//      	var url ='http://117.27.139.39:4322/'
+        	var lineId;
+			var poleId;
+			
+            $.ajax({
+		        //url: 'http://192.168.1.41:1337/peopleLineList',
+		        url:url+'peopleLineList',
+		        //data: "127605d5-ee91-4557-a7fe-fb096918b6bc",
+		        type: 'get',
+		        dataType: 'json',
+		        
+		        success: function (data) {
+		        	console.log('获取历史轨迹成功');
+		        	console.log(data)
+//		        	console.log(data.data[i].name)
+                    var js = JSON.parse(data.data);
+					console.log(js.length);
+					console.log(js[1].distance)
+					var trend='';
+		        	for(var i=0;i<js.length;i++){
+		        		var Distance = (js[i].distance.replace('m', ''))*1
+	        			console.log(Distance.toFixed(2));          
+			                        
+			            trend +='<tr>'                
+//			            trend +='<td>'+js[i].id+'</td>' 
+			            trend +='<td>'+js[i].username+'</td>'
+			            trend +='<td>'+js[i].linename+'</td>'                    
+			           
+			            trend +='<td>'+Distance.toFixed(2)+'m</td>'
+			            trend +='<td>'+js[i].createdAt.replace('.000Z', '')+'</td>' 
+			            trend +='<td id="' + js[i].lineId + '" class="Delete">'+'删除'+'</td>'
+			             trend +='<td class="DaoRu">导入</td>'
+			              trend +='<td class="ChaKan">查看</td>'
+			            trend +='</tr>'                
+			            
+			            
+			           
+			        }
+		        	$('#guiji').append(trend);
+		        	 form_paging()
+//					console.log(js[x].lineid);
+					$(document.body).on('click',".Delete",function(){
+				 	var Dlt=$(".Delete").index($(this));
+//					  console.log("点击了第"+x+"个")
+					var result=confirm('你确定要删除这条历史轨迹么？删除后数据将无法恢复！')
+					
+					
+					if(result){
+							
+							var x=$(".Delete").index($(this));
+							console.log(js[Dlt].lineid);
+							var TrueID=js[Dlt].lineid;
+							console.log(TrueID);
+							$.ajax({
+					        type: "delete",
+					        url:url+'peopleLineList',
+					        dataType: 'json',
+					        data: {
+						    	"lineId": TrueID
+						    	
+							},
+					        success: function (data, status) { 
+					        	console.log(data);
+					        	console.log(status);
+					        	console.log($(this));
+					        	if(data.message == "删除轨迹成功"){
+					        		layer.msg("路线删除成功");
+					        		setTimeout(function() {
+										layer.load(0, { shade: false });
+									}, 1500); //延迟1500毫米
+									setTimeout(function() {
+										parent.location.reload();
+									}, 3000); //延迟1500毫米
+					        		
+					        	}
+					        	
+					    		}
+							})
+						}
+					})
+
+		        	
+		        	
+		        }
+		       
+			    });
+
+				//弹出一个页面层
+				$(document.body).on('click', '.DaoRu', function() {
+					layer.open({
+						type: 1,
+						area: ['720px', '520px'],
+						shadeClose: true, //点击遮罩关闭
+						content: '<div id="KMLinput">' +
+							'<div class="container">' +
+							'<div class="row">' +
+							'<div class="col-md-12">' +
+							
+							'<br/>' +
+							'<h3>历史轨迹导入  支持格式：KML格式文件</h3>' +
+							'<br/>' +
+							'<br/>' +
+							'<input type="file"  multiple id="ssi-upload3" accept=".kml,.kmz" name="ipt3" />' +
+							'<br/>' +
+							'<h3>提供历史轨迹的班组：</h3>' +
+							'<br/>' +
+							'<br/>' +
+							'<input type="text"  multiple id="ssi-upload4"  name="ipt4" />' +
+							'<br/>' +
+							'<br/>' +
+							'<h3>导入的历史轨迹的简单说明（某某线到某某线）：</h3>' +
+							'<br/>' +
+							'<br/>' +
+							'<input type="text"  multiple id="ssi-upload5"  name="ipt5" />' +
+							'<br/>' +
+							'<br/>' +
+							'<button id="Button3">点击导入历史记录</button>' +
+							'<br/>' +
+							'</div>' +
+							'</div>' +
+							'</div>' +
+							'</div>'
+					});
+				});
+				
+				//点击上传表格
+				$(document.body).on("click", "#Button3", function(event) {
+					// 阻止表单的默认提交事件
+					event.preventDefault();
+					//	发送数据到后端
+					var data = new FormData;
+					
+					data.append("group", document.getElementById("ssi-upload4").value);
+					data.append("linename", document.getElementById("ssi-upload5").value);
+					data.append("kmlfile", document.getElementById("ssi-upload3").files[0]);
+					$.ajax({
+						type: "post",
+						url: url + "kmlFile",
+						dataType: 'json',
+						data: data,
+						processData: false,
+						contentType: false,
+						cache: false,
+						success: function(data, status) {
+							console.log(data)
+							console.log(status)
+							console.log(data.message)
+							console.log($("#ssi-upload3").val())
+							console.log($("#ssi-upload4").val())
+							if(status == "success") {
+				
+								layer.msg("历史轨迹导入成功");
+							}
+						}
+					}); //ajax结束
+				}); //点击事件结束
+
+				//弹出一个页面层
+				$(document.body).on('click', '.ChaKan', function() {
+					$.ajax({
+						//url: 'http://192.168.1.41:1337/peopleLineList',
+						url: url + 'kmlFile',
+						//data: "127605d5-ee91-4557-a7fe-fb096918b6bc",
+						type: 'get',
+						dataType: 'json',
+				
+						success: function(data) {
+							var trend1='';
+							var js=JSON.parse(data.data);
+				        	for(var i=0;i<js.length;i++){
+				        	
+			        			        
+					                        
+					            trend1 +='<div>'                
+		//			                             
+					           
+					           trend1 +='<label for="">路线信息：</label><input type="text"  id="GJ1"  value=' + js[i].linename + ' />' 
+								trend1 +='<label for="">采集班组：</label><input type="text"  id="GJ2"  value=' + js[i].kmlgroup + ' /><br/><br/>'
+								trend1 +='<label for="">创建时间：</label><input type="text"  id="GJ3"  value=' + js[i].createdAt + ' />'
+								trend1 +='<button class="delGJ" id="'+js[i].id+'">删除</button>'
+								trend1+='<br/><hr/><br/>'
+					            trend1 +='</div>'                
+					        }
+							
+							console.log(js);
+							console.log(data)
+							
+							console.log(status)
+							console.log(data.message)
+							layer.open({
+								type: 1,
+								area: ['720px', '520px'],
+								shadeClose: true, //点击遮罩关闭
+								content: '<div id="OtherShow">' +
+									'<div class="container">' +
+									'<div class="row">' +
+									'<div id="charu" class="col-md-12">' +
+									
+									'</div>' +
+									'</div>' +
+									'</div>' +
+									'</div>'
+							})
+							$('#charu').append(trend1);
+							
+						}
+					})
+				})
+				
+				$(document.body).on("click", ".delGJ", function(event) {
+					var kmlId = $(this).attr("id");
+					console.log(kmlId);
+					$.ajax({
+						type: "delete",
+						url: url + "kmlFile",
+						dataType: 'json',
+						data: {
+							"kmlId":kmlId
+						},
+						
+						success: function(data, status) {
+							console.log(data)
+							console.log(status)
+							console.log(data.message)
+							
+							if(status == "success") {
+				
+								layer.msg(data.message);
+							}
+						}
+					}); //ajax结束
+					
+				})
+				
+			function form_paging() {
+				var table = $('#GuiJi').dataTable({
+				"aaSorting": [], //默认第几个排序
+				"bStateSave": false, //状态保存
+				"bFilter": true,
+				"aoColumnDefs": [
+					//{"bVisible": false, "aTargets": [ 3 ]} //控制列的隐藏显示
+					{
+						"orderable": false,
+						"aTargets": [0, 1, 2]
+					} // 制定列不参与排序
+					]
+				});
+			
+				}
+    
+
+        </script>
+    </body>
+</html>
+
+

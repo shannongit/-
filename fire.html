@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<!--[if IE 9 ]><html class="ie9"><![endif]-->
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+        <meta name="format-detection" content="telephone=no">
+        <meta charset="UTF-8">
+
+        <meta name="description" content="Violate Responsive Admin Template">
+        <meta name="keywords" content="Super Admin, Admin, Template, Bootstrap">
+
+        <title>山火点管理</title>
+            
+        <!-- CSS -->
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+        <link href="css/animate.min.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+        <link href="css/form.css" rel="stylesheet">
+        <link href="css/calendar.css" rel="stylesheet">
+        <link href="css/media-player.css" rel="stylesheet">
+        <link href="css/style.css" rel="stylesheet">
+        <link href="css/icons.css" rel="stylesheet">
+        <link href="css/generics.css" rel="stylesheet"> 
+        <link href="css/menu.css" rel="stylesheet">
+        <!--<link rel="stylesheet" type="text/css" href="http://www.jq22.com/jquery/bootstrap-3.3.4.css">-->
+    
+        <style type="text/css">
+        	#Fire td  #play2 th #play3 th{
+        		text-align: center;
+        		display: inline-block;
+        		height: 50px;
+        		width: 120px;
+        	}
+        	#FireTable input{
+        		color: black;
+        		background-color: gainsboro;
+        		border-radius: 5px;
+        		font-family: "微软雅黑";
+        		/*font-weight: bold;*/
+        		opacity: 0.8;
+        		border-color: forestgreen;
+        		width: 90%;
+        	}
+        	#FireTable input:hover{
+        		background-color: wheat;
+        		cursor:pointer;
+        	}
+        	.fireEdit:hover{
+        		cursor:pointer;
+        		color:orange;
+        	}
+        	.FIREDelete:hover{
+        		cursor: pointer;
+        		color: orange;
+        	}
+        	#FireTable{
+        		width: 720px;
+        		height: 720px;
+        		color: black;
+        		margin: 10px;
+        		/*background-image: url(img/guowan1.png);*/
+        		background-position: center;
+        		background-size: 720px 720px;
+        	}
+        	#EditFIRE{
+				position: absolute;
+				left: 38%;
+				font-family:"微软雅黑" ;
+				font-size: 25px;
+				color: orange;
+				border-radius:5px;
+				
+			}
+        	/*#defaultStyle{
+        		text-align: center;
+        	}
+        	body{
+        		text-align: center;
+        	}*/
+        </style>
+    </head>
+    <body id="skin-blur-blue">
+        <header id="header" class="media">
+            <a href="" id="menu-toggle"></a> 
+            <a class="logo pull-left" href="asset_management.html">电力管理系统</a>
+            
+            <div class="media-body">
+                <div class="media" id="top-menu">
+                    <div class="pull-left tm-icon">
+                        <a data-drawer="messages" class="drawer-toggle" href="">
+                            <i class="sa-top-message"></i>
+                            <i class="n-count animated"></i>
+                            <span>实时消息</span>
+                        </a>
+                    </div>
+                    <div class="pull-left tm-icon">
+                        <a data-drawer="notifications" class="drawer-toggle" href="">
+                            <i class="sa-top-updates"></i>
+                            <i class="n-count animated"></i>
+                            <span>告警信息</span>
+                        </a>
+                    </div>
+                    
+                    
+
+                    <div id="time" class="pull-right">
+                        <span id="hours"></span>
+                        :
+                        <span id="min"></span>
+                        :
+                        <span id="sec"></span>
+                    </div>
+
+                    <div class="media-body">
+                        <input type="text" class="main-search">
+                    </div>
+                </div>
+            </div>
+        </header>
+        
+        
+        
+        
+        
+        <div class="clearfix"></div>
+        
+        <section id="main" class="p-relative" role="main">
+
+            <!-- Sidebar -->
+            <aside id="sidebar">
+
+                <ul class="list-unstyled side-menu" style="width: 100%!important;padding-top: 20px;text-align: center;line-height: 40px;">
+                    
+                    <!--<li>
+                        <a  href="keyInfo.html"  id='menuurl'>
+                            <i class="fa fa-bar-chart-o"></i><span> 文件上传</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="mstp_map.html" id='menuurl'>
+                            <i class="fa fa-bar-chart-o"></i><span> 全息图概览</span>
+                        </a>
+                    </li>-->
+                     <li >
+                        <a href="asset_management.html"  id='menuurl'>
+                            <i class="fa fa-building-o"></i><span> 资产管理</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="trajectory.html"  id='menuurl'>
+                            <i class="fa fa-sort-amount-asc"></i><span> 历史轨迹</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="Three_span_point.html" id='menuurl'>
+                            <i class="fa fa-calendar-o"></i><span> 三跨点管理</span>
+                        </a>
+                    </li>
+                    
+                    <li >
+                        <a href="ice.html"  id='menuurl'>
+                            <i class="fa  fa-money"></i><span> 隐患点管理</span>
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a href="fire.html" id='menuurl'>
+                            <i class="fa fa-calendar-o"></i><span> 山火点管理</span>
+                        </a>
+                    </li>
+                    <!--<li>
+                        <a href="deviceManager.html"  id='menuurl'>
+                            <i class="fa fa-briefcase"></i><span> 设备管理</span>
+                        </a>
+                    </li>-->
+                   
+                    <li >
+                        <a href="userMng.html" id='menuurl'>
+                            <i class="fa fa-users"></i><span> 用户管理</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="fileupdata.html" id='menuurl'>
+                            <i class="fa fa-cogs"></i><span > 文件管理</span>
+                        </a>
+                    </li>
+                </ul>
+                
+
+            </aside>
+        
+            <!-- Content -->
+            <section id="content" class="container">
+                <!-- Messages Drawer -->
+               
+               
+
+                 <!--Breadcrumb--> 
+                <ol class="breadcrumb hidden-xs">
+                    <li><a href="index.html">主页</a></li>
+                    <li><a href="#">管理</a></li>
+                    <li class="active">山火点管理</li>
+                </ol>
+                
+                <h4 class="page-title">山火点</h4>
+               
+				<div class="block-area" id="defaultStyle" style="display: inline-block;">
+					<div class="row" >
+						<div class="col-md-12" style="display: inline-block;">
+							<div class="tile" style="width:100%;">
+								<h2 class="tile-title">山火点管理</h2>
+								<table class="table tile" id="Fire">
+									<thead>
+										<tr id="play2">
+											<th>线路名称</th>
+											<th>运行塔号</th>
+											<th>大号侧档所在村</th>
+											<th>大号侧档内地貌种类</th>
+											<th>危险源（坟地/其它火源）</th>
+											<th>涉及户主或单位</th>
+											<th>预计防控季节或时期</th>
+											<!--<th>口头告知</th>
+											<th>防护宣传</th>
+											<th>标志牌埋设</th>
+											<th>区段等级</th>
+											<th>防火哨</th>
+											<th>隔离带</th>
+											<th>隔离墙</th>
+											<th>植被置换</th>
+											<th>视频监测</th>-->
+											<th>修改</th>
+											<th>删除</th>
+										</tr>
+									</thead>
+									<tbody id="fire">
+										
+									</tbody>
+								</table>
+								
+				
+							</div>
+						</div>
+				
+					</div>
+				</div>                    
+                   
+                   
+                
+   
+            </section>
+            
+            <br/><br/>
+        </section>
+        
+        <!-- Javascript Libraries -->
+        <!-- jQuery -->
+        <script src="js/jquery-3-2-1.js"></script> <!-- jQuery Library -->
+        
+        <!-- Bootstrap -->
+        <script src="js/bootstrap.min.js"></script>
+      
+       
+        <script src="js/jquery.dataTables.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="js/jquery.dataTables.bootstrap.js" type="text/javascript" charset="utf-8"></script>
+        <!--Media Player-->
+        <script src="js/media-player.min.js"></script> <!-- USA Map for jVectorMap -->
+        <!-- UX -->
+        <script src="js/scroll.min.js"></script> <!-- Custom Scrollbar -->
+        
+        <!-- Other -->
+        <script src="js/calendar.min.js"></script> <!-- Calendar -->
+        
+         <script src="js/Tabullet.js"></script>
+         <script src="layer-v3.1.0/layer/layer.js" type="text/javascript" charset="utf-8"></script>
+        <!-- All JS functions -->
+        <!--<script src="js/functions.js"></script>-->
+        <script src="js/Tabullet.js" type="text/javascript" charset="utf-8"></script>
+        <script src="js/urlConfig.js" type="text/javascript" charset="utf-8"></script>
+       <script type="text/javascript">
+       	
+//     	var url ='http://117.27.139.39:4322/'
+       	$.ajax({
+//				url: 'http://192.168.1.41:1337/fireLineInfo',
+				url: url + 'fireLineInfo', //url: url + 'linePoles/' + 504,
+				//data: "127605d5-ee91-4557-a7fe-fb096918b6bc",
+				type: 'get',
+				dataType: 'json',
+				success: function(data) {
+					console.log('获取隐患点信息成功');
+					console.log(data.data)
+		        	console.log(data.data.name)
+		        	var js=JSON.parse(data.data);
+					var jsqqq = JSON.parse(data.data);
+					console.log(js.length);
+					console.log(js);
+					
+					var trend = '';
+					for(var i = 0; i < js.length; i++) {
+						var jsqqq = JSON.parse(data.data);
+						var FIRE=jsqqq[i]
+						var Distance = js[i].distance * 1
+						
+						
+						trend += '<tr>'
+			            trend += '<td>' + FIRE.lineName+ '  </td>'
+			            trend += '<td>' + FIRE.polesId+ '  </td>'
+			            trend += '<td>' + FIRE.village+ '  </td>'
+			            trend += '<td>' + FIRE.landforms+ '  </td>'
+			            trend += '<td>' + FIRE.risk+ '  </td>'
+			            trend += '<td>' + FIRE.unit+ '  </td>'
+			            trend += '<td>' + FIRE.defendday+ '  </td>'
+			           
+//			            trend += '<td>' + js[i].defendSaying+ '</td>'
+//			            trend += '<td>' + js[i].defendPropaganda+ '</td>'
+//			            trend += '<td>' + js[i].signs+ '</td>'
+//			            trend += '<td>' + js[i].areaLevel+ '</td>'
+//			            trend += '<td>' + js[i].fireSentry+ '</td>'
+//			            trend += '<td>' + js[i].isolationBelt+ '</td>'
+//			            trend += '<td>' + js[i].isolationWall+ '</td>'
+//			            trend += '<td>' + js[i].vegetation+ '</td>'
+//			            trend += '<td>' + js[i].video+ '</td>'
+			            trend += '<td class="fireEdit" id="'+FIRE.id+"_____"+'">修改</td>'
+			            trend += '<td class="FIREDelete" id="'+FIRE.id+'">删除</td>'
+						trend += '</tr>' 
+						
+					}
+					$('#fire').html(trend);
+					form_paging()
+					
+				$(document.body).on('click',".fireEdit",function(event){
+				var FIRES = $(".fireEdit").index($(this));
+				var fire_id=$(this).attr("id").replace('_____', '');
+				var parent1 = window.parent.document.getElementById(''+fire_id+'').parentNode;
+				var fire_lineName=parent1.children[0].textContent;
+				var fire_polesId=parent1.children[1].textContent;
+				var fire_village=parent1.children[2].textContent;
+				var fire_landforms=parent1.children[3].textContent;
+				var fire_risk=parent1.children[4].textContent;
+				var fire_unit=parent1.children[5].textContent;
+				var fire_defendday=parent1.children[6].textContent;
+//				var fire_=$(this).attr("");
+				console.log(fire_lineName)
+			
+//				var F=js[FIRES];
+				layer.open({
+							type: 1,
+							area: ['720px', '720px'],
+							shadeClose: true, //点击遮罩关闭
+							content: '<div id="FireTable">' +
+								'<div class="container">' +
+								'<div class="poleShow">' +
+								'<button type="submit" id="EditFIRE">修改山火点信息</button><br>' +
+								'<label for="">山火点靠近线路名称：</label><input type="text"  id="TZ1" placeholder="可修改" value=' + fire_lineName + ' />' +
+								'<label for="">运行塔号线：</label><input type="text" id="TZ2" placeholder="可修改" value=' + fire_polesId+ ' />' +
+								'<label for="">大号侧档所在村：</label><input type="text" id="TZ3" placeholder="可修改" value=' + fire_village+ ' />' +
+								'<label for="">大号侧档内地貌种类：</label><input type="text" id="TZ4" placeholder="可修改" value=' + fire_landforms+ ' />' +
+								'<label for="">危险源（坟地/其它火源）：</label><input type="text"  id="TZ5" placeholder="可修改" value=' + fire_risk+ ' />' +
+								'<label for="">涉及户主或单位：</label><input type="text"  id="TZ6" placeholder="可修改" value=' + fire_unit+ ' />' +
+								'<label for="">预计防控季节或时期：</label><input type="text"  id="TZ7" placeholder="可修改" value=' + fire_defendday+ ' />' +
+//								'<label for="">口头告知：</label><input type="text"  id="TZ8" placeholder="可修改" value=' + fire_defendSaying+ ' />' +
+//								'<label for="">防护宣传：</label><input type="text"  id="TZ9" placeholder="可修改" value=' + fire_defendPropaganda+ ' />' +
+//								'<label for="">标志牌埋设：</label><input type="text"  id="TZ10" placeholder="可修改" value=' + fire_signs+ ' />' +
+//								'<label for="">区段等级：</label><input type="text"  id="TZ11" placeholder="可修改" value=' + fire_areaLevel+ ' />' +
+//								'<label for="">防火哨：</label><input type="text"  id="TZ12" placeholder="可修改" value=' + fire_fireSentry+ ' />' +
+//								'<label for="">隔离带：</label><input type="text"  id="TZ13" placeholder="可修改" value=' + fire_isolationBelt+ ' />' +
+//								'<label for="">隔离墙：</label><input type="text"  id="TZ14" placeholder="可修改" value=' + fire_isolationWall+ ' />' +
+//								'<label for="">植被置换：</label><input type="text"  id="TZ15" placeholder="可修改" value=' + fire_vegetation+ ' />' +
+//								'<label for="">有无视频监测：</label><input type="text"  id="TZ16" placeholder="可修改" value=' + fire_video+ ' />' +
+								'<label for="">ID：(切勿修改)</label><input type="text"  id="TZ17" placeholder="可修改" value=' + fire_id + ' />' +
+								'</div>' +
+								'</div>' +
+								'</div>'
+						});
+								
+					});
+					
+					console.log("66666666666666666666666666666")
+					// 阻止表单的默认提交事件
+					
+				//	发送数据到后端
+				
+				$(document.body).on('click',"#EditFIRE",function(event){
+					console.log("rrrrrrrrrr")
+					 $.ajax({
+				        type: "put",
+				        url:url+'fireLine',
+				        dataType: 'json',
+				        data: {
+				      	"id": $("#TZ17").val(),
+//					    "name": $("#inputName").val(),
+						"lineName":$("#TZ1").val(),
+						"polesId":$("#TZ2").val(),
+						"village":$("#TZ3").val(),
+						"landforms":$("#TZ4").val(),
+						"risk":$("#TZ5").val(),
+						"unit":$("#TZ6").val(),
+						"defendday":$("#TZ7").val(),
+//						"defendSaying":$("#TZ8").val(),
+//						"defendPropaganda":$("#TZ9").val(),
+//						"signs":$("#TZ10").val(),
+//						"areaLevel":$("#TZ11").val(),
+//						"fireSentry":$("#TZ12").val(),
+//						"isolationBelt":$("#TZ13").val(),
+//						"isolationWall":$("#TZ14").val(),
+//						"vegetation":$("#TZ15").val(),
+//						"video":$("#TZ16").val()
+					
+			            
+						
+				},
+				        success: function (data, status) { 
+				        	console.log("data="+data)
+				        	console.log("状态码="+status)
+				        	console.log("data.message"+data.message)
+				        	
+				        	if(data.errorCode == 1){
+				        		layer.msg("修改山火点数据成功!");
+				        		setTimeout( function(){
+							    layer.load(0, {shade: false}); //0代表加载的风格，支持0-2
+							    
+								}, 2000);//延迟1500毫米
+								layer.closeAll('loading'); //关闭加载层
+				        		setTimeout( function(){
+								    
+//									layer.closeAll('loading'); //关闭加载层	
+								    parent.location.reload()
+								}, 3000);//延迟1500毫米
+				        	}
+				        	
+				        }
+				    });
+				  
+				 });
+					
+					
+				}//获取路线结束
+			});//ajax结束
+			
+			$(document.body).on('click',".FIREDelete",function(){
+					var result=confirm('你确定要删除么？')
+					
+					console.log(this.id)
+					if(result){
+						
+//							console.log($(this.parent))
+							$.ajax({
+					        type: "delete",
+					        url:url+'fireLine',
+					        dataType: 'json',
+					        data: {
+						    	"id": this.id
+						    	
+							},
+					        success: function (data, status) { 
+					        	
+					        	if(data.errorCode == 1){
+				        		layer.msg(data.message);
+				        		
+										
+								setTimeout( function(){
+							    layer.load(0, {shade: false}); //0代表加载的风格，支持0-2
+							    
+								}, 2000);//延迟1500毫米
+								layer.closeAll('loading'); //关闭加载层
+				        		setTimeout( function(){
+								    
+//									layer.closeAll('loading'); //关闭加载层	
+								    parent.location.reload()
+								}, 3000);//延迟1500毫米
+				        	}
+					        	
+					    		}
+							})
+					}
+				})
+			
+			
+			
+			function form_paging() {
+				var table = $('#Fire').dataTable({
+				"aaSorting": [], //默认第几个排序
+				"bStateSave": false, //状态保存
+				"bFilter": true,
+				"aoColumnDefs": [
+					//{"bVisible": false, "aTargets": [ 3 ]} //控制列的隐藏显示
+					{
+						"orderable": false,
+						"aTargets": [0, 1, 2]
+					} // 制定列不参与排序
+					]
+				});
+			
+				}
+       </script>
+    </body>
+</html>
+

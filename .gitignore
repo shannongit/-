@@ -1,0 +1,12 @@
+
+bigData/ShuJuGuanLiPingTai/img/
+
+*.sln
+*.csproj
+*.sln
+*.userprefs
+*.unityproj
+*.DS_Store
+!*.dll
+!*.obj
+!*.exe

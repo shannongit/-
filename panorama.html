@@ -1,0 +1,242 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>全景图</title>
+    <script src="layer-v3.1.0/jquery.min.js"></script>
+    <script src="layer-v3.1.0/layer/layer.js"></script>
+    <script src="js/three.js"></script>
+    <script src="js/panorama.js"></script>
+    <script src="js/urlConfig.js" type="text/javascript" charset="utf-8"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <meta name="format-detection" content="telephone=no">
+    <meta charset="UTF-8">
+  
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/generics.css" rel="stylesheet"> 
+	<meta charset="utf-8" />
+</head>
+<style type="text/css">
+	/*#panoramaTips{
+		width: 100%;
+		height: 100%;
+		text-align: center;
+		background-image: url(../img/body/blue.jpg);
+		background-position: center;
+		background-size: 100% 100%;
+	}*/
+	#addBtn,#cancelBtn{
+        		border-radius:5px;
+        		background-color: #00CA6D;
+        		width: 60px;
+        		height: 30px;
+        		margin-top: 2px;
+        	}
+        	
+    #selectDiv{
+    	background-image:url(../img/body/g.jpg) ;
+    	height: 100%;
+		width: 100%;
+		background-position: center;
+		background-size: 100% 100%;
+		border-radius: 5px;
+		margin:0 auto;
+    }
+    #selectLine{
+    	width: 100px;
+    	height: 30px;
+    	border-radius:5px;
+    	margin-top: 2px;
+    	margin-left: 5px;
+    	background-color:#00CA6D;
+    }
+    #selectPole{
+    	width: 60px;
+    	height: 30px;
+    	border-radius:5px;
+    	margin-top: 2px;
+    	background-color:#00CA6D;
+    }
+    
+    #selectPole,#selectLine option{
+    	/*width: 50px;
+    	height: 30px;
+    	margin-top: 2px;*/
+    	background-color:#00CA6D;
+    }
+    #fileElem{
+    	width: 180px;
+    	height: 50px;
+    	border-radius: 8px;
+    	/*margin-top: 10px;*/
+    	margin-left: 50px;
+    	background-color: #00CA6D;
+    }
+    #comeback{
+    	width: 100px;
+    	height: 50px;
+    	border-radius: 8px;
+    	margin-top: 20px;
+    	margin-left: 300px;
+    	background-color: #00CA6D;
+    	text-align: center;
+    	line-height: 50px;
+    }
+</style>
+
+<!--[if IE 9 ]><html class="ie9"><![endif]-->
+   
+    <body id="skin-blur-blue">
+        <section id="error-page" class="tile">
+            <h1 class="m-b-10">全景图上传</h1>
+            <p>点击所需要的全景图，确认图片命名之后，可在全景图上添加跳转到其他塔的热点</p>
+            <!--<a class="underline" href="">Back to previous page</a> or <a class="underline" href="">Go to Home page</a>--> 
+        </section>
+        
+       
+    <!--全景图-->
+    <div id="container" style="margin: 0; top: 0; left: 0; width: 100%; height: 100%; position: absolute;z-index:9999999;display:none">
+        <input type=button id="back" onclick="PanoramaBackBtnCallback()" style="color:white; background:black;float:left;position: fixed;top: 7px;right:20px" value="返回" />
+        <input type=button id="sure" onclick="PanoramaSureBtnCallback()" style="color:white; background:black;float:left;position: fixed;bottom: 7px;right:20px" value="提交" />
+        <div id="selectDiv" style="position: absolute;width:300px;height:35px;left:50%;top:50%; border:2px solid black;display:none">
+            <!--下拉框-->
+            <select id="selectLine" onchange="selectLineChangeCallBack()" style="float:left;font-size:20px" name="selectLine">
+                <option value="10">后富线</option>
+            </select>
+            <select id="selectPole" style="float:left; font-size:20px" name="selectPole">
+                <option value="10">1</option>
+            </select>
+            <button id="addBtn" onClick="addBtnCallBack()">添加 </button>
+            <button id="cancelBtn" onClick="cancelBtnCallBack()">取消 </button>
+        </div>
+    </div> 
+    <!-- multiple accept要设置具体的格式，不然在谷歌的浏览器打开文件选择框的时候会卡顿-->
+    <input type="file" id="fileElem" style="position:absolute"  multiple accept="image/jpg,image/jpeg,image/png" onchange="handleFiles(this)">
+    <div id="comeback"><a href="asset_management.html">返回</a></div>
+    <script src="urlConfig.js" type="text/javascript" charset="utf-8"></script>
+    <script>
+            //初始化全景图球
+            panoramaGetLineData();
+            panorama();
+            //选择本地图片
+            window.URL = window.URL || window.webkitURL;
+            function handleFiles(obj) {
+                var files = obj.files,
+                img = new Image();
+                if (window.URL) {
+                    //File API
+                    //alert(files[0].name + "," + files[0].size + " bytes");
+                    img.src = window.URL.createObjectURL(files[0]); //创建一个object URL，并不是你的本地路径
+                    img.width = 200;
+                    img.onload = function (e) {
+                        window.URL.revokeObjectURL(this.src); //图片加载后，释放object URL
+                    }
+                    document.getElementById("container").style.display = '';
+                    PanorameLoadLocalImg(img.src);
+                    //把input里面的值清空，防止下一次选择同一个文件时，不会触发onchange事件
+                    //$('#fileElem').val('');  
+                } else if (window.FileReader) {
+                    //opera不支持createObjectURL/revokeObjectURL方法。我们用FileReader对象来处理
+                    var reader = new FileReader();
+                    reader.readAsDataURL(files[0]);
+                    reader.onload = function (e) {
+                        //alert(files[0].name + "," + e.total + " bytes");
+                        img.src = this.result;
+                        img.width = 200;
+                    }
+                    PanorameLoadLocalImg(img.src);
+                } else {
+                    //ie
+                    obj.select();
+                    obj.blur();
+                    var nfile = document.selection.createRange().text;
+                    document.selection.empty();
+                    img.src = nfile;
+                    img.width = 200;
+                    img.onload = function () {
+                        //alert(nfile + "," + img.fileSize + " bytes");
+                    }
+                    PanorameLoadLocalImg(img.src);
+                }
+            }
+
+
+            //为Select添加事件，当选择其中一项时触发
+            function selectLineChangeCallBack() {
+                var checkText = $("#selectLine").find("option:selected").text();  //获取Select选择的Text
+                panoramaChangeLine(checkText);
+            }
+            //取消按钮回调
+            function cancelBtnCallBack() {
+                $("#selectDiv").hide();
+                panoramaSetPrompFlag(false);
+            }
+            //添加按钮回调
+            function addBtnCallBack() {
+                panoramaGenerateBtn();
+                $("#selectDiv").hide();
+                panoramaSetPrompFlag(false);
+            }
+            //让selectDiv出现在鼠标点击的位置
+            window.onload = function () {
+                document.onmousedown = function (ev) {
+                    if (panoramaGetPrompFlag())
+                        return;
+                    var oEvent = ev || event;
+                    var obj = document.elementFromPoint(oEvent.clientX, oEvent.clientY);
+                    //console.log(obj);
+                    if (obj.id)
+                        return;
+                    var oDiv = document.getElementById('selectDiv');
+                    oDiv.style.left = oEvent.clientX + 'px';  // 指定创建的DIV在文档中距离左侧的位置
+                    oDiv.style.top = oEvent.clientY + 'px';  // 指定创建的DIV在文档中距离顶部的位置
+                    oDiv.style.border = '1px solid black'; // 设置边框
+                    oDiv.style.position = 'absolute'; // 为新创建的DIV指定绝对定位
+                }
+            }
+            
+             
+	        $("#sure").on("click",function(){
+	            var data=new FormData;
+	            console.log('dddddddddd');
+	            console.log(document.getElementById("fileElem").files[0]);
+	            var FilesOne=document.getElementById("fileElem").files[0]
+	//          console.log(FilesOne)
+	            var name = FilesOne.name;
+	            name = name.replace('.jpg', '');
+	            data.append("fileName",name);
+	//          FilesOne.name.TrimEnd().Remove(FilesOne.name.Length - 3, 3)
+	            
+	            console.log("1111111111")
+	            console.log(name) 
+	//          var test = PanoramaSureBtnCallback();
+	            var test2 = PanoramaGetData();
+	//          console.log(test)
+	            console.log(test2)
+	            data.append("buttonJson",test2);
+	            data.append("upfile",FilesOne);
+	            $.ajax({
+	                url:url +"panoramaPhoto",
+	                type:"POST",
+	                dataType:"JSON",
+	                data:data,
+	                contentType: false,
+	                processData: false,
+	                success:function(data){
+	                	console.log(data)
+					    console.log(status)
+					    console.log(data.message)
+	                    if(data.message == "上传成功"){
+			        		
+			        		 layer.msg("添加全景图成功");
+				
+			        		
+			        	}
+	                }
+	            })
+	        })
+    </script>      
+</body>
+</html>

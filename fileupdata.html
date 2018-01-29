@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<!--[if IE 9 ]><html class="ie9"><![endif]-->
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+        <meta name="format-detection" content="telephone=no">
+        <meta charset="UTF-8">
+
+        <meta name="description" content="Violate Responsive Admin Template">
+        <meta name="keywords" content="Super Admin, Admin, Template, Bootstrap">
+
+        <title>资产管理</title>
+            
+        <!-- CSS -->
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+        <link href="css/animate.min.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="css/allin.css"/>
+        <link href="css/f`orm.css" rel="stylesheet">
+        <link href="css/calendar.css" rel="stylesheet">
+        <link href="css/media-player.css" rel="stylesheet">
+        <link href="css/style.css" rel="stylesheet">
+        <link href="css/icons.css" rel="stylesheet">
+        <link href="css/generics.css" rel="stylesheet"> 
+        <link href="css/menu.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="css/EsayPhotoShow.css">
+        <!--<link rel="stylesheet" type="text/css" href="http://www.jq22.com/jquery/bootstrap-3.3.4.css">-->
+    	<!--<link rel="stylesheet" type="text/css" href="imgInput/css/bootstrap.min.css" />-->
+		<!--<link rel="stylesheet" type="text/css" href="imgInput/css/style.css">-->
+		<!--<link rel="stylesheet" href="imgInput/css/ssi-uploader.css"/>-->
+        <style type="text/css">
+        	#UP{
+        		position: absolute;
+        		left: 220px;
+        	}
+        	#UP button{
+        		width: 100px;
+        		height: 40px;
+        		border-radius:3px;
+        		border:1px solid groove;
+        		background-color: limegreen;
+        		
+        	}
+        	#UP button:hover{
+        		cursor: pointer;
+        		color: orange;
+        	}
+        </style>
+    </head>
+    <body id="skin-blur-blue">
+        <header id="header" class="media">
+            <a href="" id="menu-toggle"></a> 
+            <a class="logo pull-left" href="asset_management.html" style="color: white">电力管理系统</a>
+            
+            <div class="media-body">
+                <div class="media" id="top-menu">
+                    <div class="pull-left tm-icon">
+                        <a data-drawer="messages" class="drawer-toggle" href="">
+                            <i class="sa-top-message"></i>
+                            <i class="n-count animated"></i>
+                            <span>实时消息</span>
+                        </a>
+                    </div>
+                    <div class="pull-left tm-icon">
+                        <a data-drawer="notifications" class="drawer-toggle" href="">
+                            <i class="sa-top-updates"></i>
+                            <i class="n-count animated"></i>
+                            <span>告警信息</span>
+                        </a>
+                    </div>
+                    
+                   
+
+                    <div id="time" class="pull-right">
+                        <span id="hours"></span>
+                        :
+                        <span id="min"></span>
+                        :
+                        <span id="sec"></span>
+                    </div>
+
+                    <div class="media-body">
+                        <input type="text" class="main-search">
+                    </div>
+                </div>
+            </div>
+        </header>
+        
+        <div class="clearfix"></div>
+        
+        <section id="main" class="p-relative" role="main">
+
+            <!-- Sidebar -->
+            <aside id="sidebar">
+
+                <ul class="list-unstyled side-menu" style="width: 100%!important;padding-top: 20px;text-align: center;line-height: 40px;">
+                    <!--<li>
+                        <a href="operational_monitoring.html" id='menuurl'>
+                            <i class="fa fa-calendar-o"></i><span> 运行监测</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a  href="keyInfo.html"  id='menuurl'>
+                            <i class="fa fa-bar-chart-o"></i><span> 文件上传</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="mstp_map.html" id='menuurl'>
+                            <i class="fa fa-bar-chart-o"></i><span> 全息图概览</span>
+                        </a>
+                    </li>-->
+                     <li >
+                        <a href="asset_management.html"  id='menuurl'>
+                            <i class="fa fa-building-o"></i><span> 资产管理</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="trajectory.html" target=_blank id='menuurl'>
+                            <i class="fa fa-sort-amount-asc"></i><span> 历史轨迹</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="Three_span_point.html" target=_blank id='menuurl'>
+                            <i class="fa fa-calendar-o"></i><span> 三跨点管理</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="ice.html" target=_blank id='menuurl'>
+                            <i class="fa  fa-money"></i><span> 隐患点管理</span>
+                        </a>
+                    </li>
+                     <li>
+                        <a href="fire.html" target=_blank id='menuurl'>
+                            <i class="fa fa-calendar-o"></i><span> 山火点管理</span>
+                        </a>
+                    </li>
+                    <!--<li >
+                        <a href="deviceManager.html"  id='menuurl'>
+                            <i class="fa fa-briefcase"></i><span> 设备管理</span>
+                        </a>
+                    </li>-->
+                   
+                    <li >
+                        <a href="userMng.html" target=_blank id='menuurl'>
+                            <i class="fa fa-users"></i><span> 用户管理</span>
+                        </a>
+                    </li>
+                    <li class="active"  >
+                        <a href="fileupdata.html" id='menuurl'>
+                            <i class="fa fa-cogs"></i><span > 文件管理</span>
+                        </a>
+                    </li>
+                </ul>
+                
+
+            </aside>
+        
+            <div id="UP">
+			<h3 >覆冰点信息上传  支持格式：xls格式文件</h3>
+			<br/>
+			<input type="file"  multiple accept=".xls" id="iceinput" name="ice" />
+			<br/>
+			<button id="icebut">点击上传表格</button>
+			<br />
+			<h3 >山火点信息上传  支持格式：xls格式文件</h3>
+			<br/>
+			<input type="file"  multiple accept=".xls" id="fireinput" name="fire" />
+			<br/>
+			<button id="firebut">点击上传表格</button>
+			<br />
+			<h3 >三跨点信息上传  支持格式：xls格式文件</h3>
+			<br/>
+			<input type="file"  multiple accept=".xls" id="highinput" name="high" />
+			<br/>
+			<button id="highbut">点击上传表格</button>
+			<h3>路线表格上传  支持格式：xls格式文件</h3>
+			<br/>
+			<input type="file"  multiple id="ssi-upload3"accept=".xls" name="ipt3" />
+			<br />
+			<button id="Button3">点击上传表格</button>
+			<br/>
+			<br/>
+			<h3>模型上传  支持格式：gltf格式文件</h3>
+			<br/>
+			<input type="file"  multiple id="ssi-upload4" accept=".gltf" name="ipt4" />
+			<br />
+			<button id="Button4">点击上传模型</button>
+			<br/>
+			<br/>
+			<h3>导线表格上传  支持格式：xls格式文件</h3>
+			<br/>
+			<input type="file"  multiple id="ssi-upload5" accept=".xls" name="ipt5" />
+			<br />
+			<button id="Button5">点击上传表格</button>
+			<br/>
+			<br/>
+			<h3>绝缘子表格上传  支持格式：xls格式文件</h3>
+			<br/>
+			<input type="file"  multiple id="ssi-upload6" accept=".xls" name="ipt6" />
+			<br />
+			<button id="Button6">点击上传表格</button>
+			<br/>
+			<!--<input type="file"  multiple id="getGPS" accept=".jpg" name="getgps" />
+			<button id="getgps">点击上传tupian</button>-->
+			</div>
+            
+        </section>
+       
+        <script src="js/jquery-3-2-1.js"></script> <!-- jQuery Library -->
+        
+        <!-- Bootstrap -->
+        <script src="js/bootstrap.js"></script>
+       
+        <script src="js/jquery.dataTables.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="js/jquery.dataTables.bootstrap.js" type="text/javascript" charset="utf-8"></script>
+        
+        <script src="layer-v3.1.0/layer/layer.js" type="text/javascript" charset="utf-8"></script>
+        
+        <!--Media Player-->
+        <script src="js/media-player.min.js"></script> <!-- USA Map for jVectorMap -->
+        <!-- UX -->
+        <script src="js/scroll.min.js"></script> <!-- Custom Scrollbar -->
+        
+        <!-- Other -->
+        <script src="js/calendar.min.js"></script> <!-- Calendar -->
+        
+         <script src="js/Tabullet.js"></script>
+        <!-- All JS functions -->
+        <!--<script src="js/functions.js"></script>-->
+       
+    	<script src="js/urlConfig.js" type="text/javascript" charset="utf-8"></script>
+        <script src="js/allin.js" type="text/javascript" charset="utf-8"></script>
+        <!--<script src="js/allins.js" type="text/javascript" charset="utf-8"></script>-->
+        
+        <script type="text/javascript">
+//覆冰点表格上传
+$(document.body).on("click","#icebut",function(event){
+		console.log(document.getElementById("iceinput").files[0]);
+		// 阻止表单的默认提交事件
+		event.preventDefault();
+	//	发送数据到后端
+		var data=new FormData;
+        data.append("iceExcel",document.getElementById("iceinput").files[0]);
+        console.log(data);
+		 $.ajax({
+	//   	parent.location.reload()
+	        type: "post",
+	        url: url+"iceExcel",
+	        dataType: 'json',
+	        data:data,
+			processData: false,
+			contentType: false,
+			cache:false,
+	        success: function (data, status) { 
+	        
+        	if(data.errorCode == "1") {
+
+				layer.msg("覆冰点表格上传成功");
+			}
+			if(data.errorCode == "0") {
+
+				layer.msg(data.message);
+			}
+	       }
+	    });//ajax结束
+//				   };//循环结束
+	 });//点击事件结束
+	 
+//山火点表格上传	 
+$(document.body).on("click","#firebut",function(event){
+		console.log(document.getElementById("fireinput").files[0]);
+		// 阻止表单的默认提交事件
+		event.preventDefault();
+	//	发送数据到后端
+		var data=new FormData;
+        data.append("fireExcel",document.getElementById("fireinput").files[0]);
+        console.log(data);
+		 $.ajax({
+	//   	parent.location.reload()
+	        type: "post",
+	        url: url+"fireExcel",
+	        dataType: 'json',
+	        data:data,
+			processData: false,
+			contentType: false,
+			cache:false,
+	        success: function (data, status) { 
+	        
+        	if(data.errorCode == "1") {
+
+				layer.msg("山火点表格上传成功");
+			}
+			if(data.errorCode == "0") {
+
+				layer.msg(data.message);
+			}
+	       }
+	    });//ajax结束
+//				   };//循环结束
+	 });//点击事件结束
+
+//三跨点表格上传
+$(document.body).on("click","#highbut",function(event){
+		console.log(document.getElementById("highinput").files[0]);
+		// 阻止表单的默认提交事件
+		event.preventDefault();
+	//	发送数据到后端
+		var data=new FormData;
+        data.append("speedlineExcel",document.getElementById("highinput").files[0]);
+        console.log(data);
+		 $.ajax({
+	//   	parent.location.reload()
+	        type: "post",
+	        url: url+"speedlineExcel",
+	        dataType: 'json',
+	        data:data,
+			processData: false,
+			contentType: false,
+			cache:false,
+	        success: function (data, status) { 
+	        
+        	if(data.errorCode == "1") {
+
+				layer.msg("三跨点表格上传成功");
+			}
+			if(data.errorCode == "0") {
+
+				layer.msg(data.message);
+			}
+	       }
+	    });//ajax结束
+//				   };//循环结束
+	 });//点击事件结束
+	 
+//点击上传路线表格
+$(document.body).on("click", "#Button3", function(event) {
+	//					console.log('tttttttttttttttttable')
+	//					console.log(document.getElementById("ssi-upload3").files[0]);
+	// 阻止表单的默认提交事件
+	event.preventDefault();
+	//	发送数据到后端
+	var data = new FormData;
+	//					console.log('qqqqq')
+	//					console.log(document.getElementById("ssi-upload").files[0])
+
+	//					data.append("lineId",lineId);
+	// 					data.append("poleId",poleId);
+	// 					data.append("fileName","666");
+
+	// 					for (var i = 0; i < files.Length; i++) {
+	//          		var filess = files[i];
+	data.append("poleExcel", document.getElementById("ssi-upload3").files[0]);
+	//		            console.log("这是第"+i+"个文件")
+	//					console.log("在传第几个"+document.getElementById("ssi-upload").file)
+	$.ajax({
+		//   	parent.location.reload()
+		type: "post",
+		url: url + "poleExcel",
+		dataType: 'json',
+		data: data,
+		//				        {
+		//						poleId:'A2EF6173844B4620825CCA786A1DBF6C21030100001',
+		//						lineId:1053,
+		//						upfile:$("#ssi-upload").val()
+		//						},
+		processData: false,
+		contentType: false,
+		cache: false,
+		success: function(data, status) {
+			console.log(data)
+			console.log(status)
+			console.log(data.message)
+			console.log($("#ssi-upload3").val())
+
+			if(data.errorCode == "1") {
+
+				layer.msg("路线信息表格上传成功");
+			}
+			if(data.errorCode == "0") {
+
+				layer.msg(data.message);
+			}
+			//				        	location.reload()
+			//				        	clearInterval()
+		}
+	}); //ajax结束
+	//				   };//循环结束
+}); //点击事件结束
+
+$(document.body).on("click", "#Button4", function(event) {
+	//					console.log('modelFile')
+	//					console.log(document.getElementById("ssi-upload4").files[0])
+	var FilesMode = document.getElementById("ssi-upload4").files[0]
+	var ModeName = FilesMode.name;
+	ModeName = ModeName.replace('.gltf', '');
+	// 阻止表单的默认提交事件
+	event.preventDefault();
+	//	发送数据到后端
+	var data = new FormData;
+	//					console.log('qqqqq')
+	//					console.log(document.getElementById("ssi-upload").files[0])
+
+	//					data.append("lineId",lineId);
+	// 					data.append("poleId",poleId);
+	data.append("modelName", ModeName);
+	// 					for (var i = 0; i < files.Length; i++) {
+	//          		var filess = files[i];
+	data.append("upmodel", document.getElementById("ssi-upload4").files[0]);
+	//		            console.log("这是第"+i+"个文件")
+	//					console.log("在传第几个"+document.getElementById("ssi-upload").file)
+	$.ajax({
+		//   	parent.location.reload()
+		type: "post",
+		url: url + "modelFile",
+		dataType: 'json',
+		data: data,
+		//				        {
+		//						poleId:'A2EF6173844B4620825CCA786A1DBF6C21030100001',
+		//						lineId:1053,
+		//						upfile:$("#ssi-upload").val()
+		//						},
+		processData: false,
+		contentType: false,
+		cache: false,
+		success: function(data, status) {
+			console.log(data)
+			console.log(status)
+			console.log(data.message)
+			console.log($("#ssi-upload4").val())
+			if(data.errorCode == "1") {
+
+				layer.msg("模型上传成功");
+			}
+			if(data.errorCode == "0") {
+
+				layer.msg(data.message);
+			}
+			//				        	location.reload()
+			//				        	clearInterval()
+		}
+	}); //ajax结束
+	//				   };//循环结束
+}); //点击事件结束
+
+//点击上传导线表格
+$(document.body).on("click", "#Button5", function(event) {
+	//					console.log('tttttttttttttttttable')
+	//					console.log(document.getElementById("ssi-upload3").files[0]);
+	// 阻止表单的默认提交事件
+	event.preventDefault();
+	//	发送数据到后端
+	var data = new FormData;
+	//					console.log('qqqqq')
+	//					console.log(document.getElementById("ssi-upload").files[0])
+
+	//					data.append("lineId",lineId);
+	// 					data.append("poleId",poleId);
+	// 					data.append("fileName","666");
+
+	// 					for (var i = 0; i < files.Length; i++) {
+	//          		var filess = files[i];
+	data.append("wireExcel", document.getElementById("ssi-upload5").files[0]);
+	//		            console.log("这是第"+i+"个文件")
+	//					console.log("在传第几个"+document.getElementById("ssi-upload").file)
+	$.ajax({
+		//   	parent.location.reload()
+		type: "post",
+		url: url + "wiresExcel",
+		dataType: 'json',
+		data: data,
+		//				        {
+		//						poleId:'A2EF6173844B4620825CCA786A1DBF6C21030100001',
+		//						lineId:1053,
+		//						upfile:$("#ssi-upload").val()
+		//						},
+		processData: false,
+		contentType: false,
+		cache: false,
+		success: function(data, status) {
+			console.log(data)
+			console.log(status)
+			console.log(data.message)
+			console.log($("#ssi-upload5").val())
+
+			if(data.errorCode == "1") {
+
+				layer.msg("导线信息表格上传成功");
+			}
+			if(data.errorCode == "0") {
+
+				layer.msg(data.message);
+			}
+			//				        	location.reload()
+			//				        	clearInterval()
+		}
+	}); //ajax结束
+	//				   };//循环结束
+}); //点击事件结束
+
+//点击绝缘子表格
+$(document.body).on("click", "#Button6", function(event) {
+	//					console.log('tttttttttttttttttable')
+	//					console.log(document.getElementById("ssi-upload3").files[0]);
+	// 阻止表单的默认提交事件
+	event.preventDefault();
+	//	发送数据到后端
+	var data = new FormData;
+	//					console.log('qqqqq')
+	//					console.log(document.getElementById("ssi-upload").files[0])
+
+	//					data.append("lineId",lineId);
+	// 					data.append("poleId",poleId);
+	// 					data.append("fileName","666");
+
+	// 					for (var i = 0; i < files.Length; i++) {
+	//          		var filess = files[i];
+	data.append("insuExcel", document.getElementById("ssi-upload6").files[0]);
+	//		            console.log("这是第"+i+"个文件")
+	//					console.log("在传第几个"+document.getElementById("ssi-upload").file)
+	$.ajax({
+		//   	parent.location.reload()
+		type: "post",
+		url: url + "insulatorExcel",
+		dataType: 'json',
+		data: data,
+		//				        {
+		//						poleId:'A2EF6173844B4620825CCA786A1DBF6C21030100001',
+		//						lineId:1053,
+		//						upfile:$("#ssi-upload").val()
+		//						},
+		processData: false,
+		contentType: false,
+		cache: false,
+		success: function(data, status) {
+			console.log(data)
+			console.log(status)
+			console.log(data.message)
+			console.log($("#ssi-upload6").val())
+
+			if(data.errorCode == "1") {
+
+				layer.msg("绝缘子信息表格上传成功");
+			}
+			if(data.errorCode == "0") {
+
+				layer.msg(data.message);
+			}
+			//				        	location.reload()
+			//				        	clearInterval()
+		}
+	}); //ajax结束
+	//				   };//循环结束
+}); //点击事件结束
+	////图片上传前获取图片信息
+	//$(document.body).on("click", "#getgps", function(event) {
+	//var MyTest = document.getElementById("getGPS").files[0];
+	//var reader = new FileReader();
+	//reader.readAsDataURL(MyTest);
+	//reader.onload = function(theFile) {
+	//　　var image = new Image();
+	// image.src = theFile.target.result;
+	// image.onload = function() {
+	// 　　alert("图片的宽度为"+this.url+",长度为"+this.height);
+	// };
+	//};
+	//});
+        </script>	
+    </body>
+</html>
+
+
